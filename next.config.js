@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
-const basePath = process.env.NODE_ENV === 'production' ? '/Portfolio' : '';
+const isGithubPages = process.env.GITHUB_PAGES === 'true';
+const basePath = isGithubPages ? '/Portfolio' : '';
+
 const nextConfig = {
-  output: 'export',
+  ...(isGithubPages && { output: 'export' }),
   trailingSlash: true,
   images: { unoptimized: true },
   basePath,
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/Portfolio/' : '',
+  assetPrefix: isGithubPages ? '/Portfolio/' : '',
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
   },
