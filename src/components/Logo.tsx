@@ -56,10 +56,10 @@ export function Logo() {
         {/* Wordmark */}
         <div className="flex flex-col leading-none">
           <span className="text-[11px] font-semibold tracking-[0.22em] text-white/90 uppercase transition-colors duration-300 group-hover:text-white">
-            Rahul
+            Arun
           </span>
           <span className="text-[11px] font-semibold tracking-[0.22em] text-white/40 uppercase transition-colors duration-300 group-hover:text-white/70">
-            Podugu
+            Alur
           </span>
         </div>
       </a>

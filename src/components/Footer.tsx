@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="border-t border-white/[0.06] bg-pure-black py-8">
       <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 sm:flex-row">
         <p className="text-[11px] uppercase tracking-[0.3em] text-white/30">
-          © {new Date().getFullYear()} Rahul Podugu
+          © {new Date().getFullYear()} Arun Alur
         </p>
 
         <p className="text-[11px] uppercase tracking-[0.3em] text-white/20">
@@ -16,7 +16,7 @@ export default function Footer() {
 
         <div className="flex items-center gap-4">
           <a
-            href="https://www.linkedin.com/in/rahulpodugu/"
+            href="https://www.linkedin.com/in/arun-basavaraj-alur/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -25,7 +25,7 @@ export default function Footer() {
             <Linkedin className="h-4 w-4" />
           </a>
           <a
-            href="https://github.com/Rahul2251999"
+            href="https://github.com/ArunAlur"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"

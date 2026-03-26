@@ -2,8 +2,8 @@
 
 const techs = [
   "Java", "Python", "TypeScript", "Spring Boot", "Node.js", "React",
-  "AWS", "Kubernetes", "Docker", "Kafka", "PostgreSQL", "Redis",
-  "LangChain", "FastAPI", "Terraform", "gRPC", "GraphQL", "RAG Pipelines",
+  "AWS", "Kubernetes", "Docker", "Kafka", "PostgreSQL", "DynamoDB",
+  "LangChain", "FastAPI", "Flask", "GraphQL", "Hibernate", "Spark",
 ];
 
 export default function TechMarquee() {

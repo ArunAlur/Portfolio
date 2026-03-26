@@ -8,20 +8,20 @@ import SmoothScroll from "@/components/SmoothScroll";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Rahul Podugu — Software Engineer",
-  description: "Backend & distributed systems engineer. Payment rails, AI analytics, and calm architectures.",
+  title: "Arun Alur — Software Engineer",
+  description: "Backend-focused software engineer building cloud-native services with Java, Spring Boot, and AWS.",
   themeColor: "#000000",
   openGraph: {
     type: "website",
-    url: "https://rahul2251999.github.io/portfolio",
-    title: "Rahul Podugu — Software Engineer",
-    description: "Backend & distributed systems engineer. Payment rails, AI analytics, and calm architectures.",
-    siteName: "Rahul Podugu Portfolio",
+    url: "https://arunalur.github.io/portfolio",
+    title: "Arun Alur — Software Engineer",
+    description: "Backend-focused software engineer building cloud-native services with Java, Spring Boot, and AWS.",
+    siteName: "Arun Alur Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rahul Podugu — Software Engineer",
-    description: "Backend & distributed systems engineer. Payment rails, AI analytics, and calm architectures.",
+    title: "Arun Alur — Software Engineer",
+    description: "Backend-focused software engineer building cloud-native services with Java, Spring Boot, and AWS.",
   },
 };
 

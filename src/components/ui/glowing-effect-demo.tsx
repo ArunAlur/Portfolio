@@ -7,10 +7,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowUpRight, Box, Database, GitBranch, Layers } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { cn } from "@/lib/utils";
-import finsightImage from "../../../Projects images/Finsight.png";
-import decentralizedImage from "../../../Projects images/decentralised.png";
-import chatbotImage from "../../../Projects images/chatbot.png";
-import cacheImage from "../../../Projects images/cache.png";
+// Project images removed — using placeholder gradients instead
 
 const containerVariants = {
   hidden: {},
@@ -34,40 +31,41 @@ export function GlowingEffectDemo() {
       viewport={{ once: true, margin: "-60px" }}
     >
       <GridItem
-        icon={<Database className="h-4 w-4 text-emerald-400" />}
-        title="FinSight AI"
-        description="An AWS-native RAG engine combining FastAPI, LlamaIndex, and OpenSearch Serverless to surface real-time risk signals from payment regulations and fraud narratives."
-        meta="AWS-native fintech RAG platform with real-time risk intelligence"
-        tags={["AWS", "RAG", "LLM", "SageMaker"]}
-        repoUrl="https://github.com/rahul2251999/FinSight-AI"
-        imageSrc={finsightImage as string}
+        icon={<GitBranch className="h-4 w-4 text-emerald-400" />}
+        title="git-context"
+        description="A 4-phase AST-powered pipeline that compresses any GitHub repo into a single token-budgeted context file (32k–200k tokens) for LLM ingestion. Supports 5 runtimes, 13 REST API endpoints, and MCP server integration for Claude, GPT-4, and Gemini."
+        meta="AST-powered codebase-to-LLM context tool"
+        tags={["Python", "FastAPI", "Tree-sitter", "React", "TypeScript", "MCP"]}
+        repoUrl="https://github.com/ArunAlur/git-context"
+        liveUrl="https://git-context.com"
+        imageSrc="/projects/git-context.jpg"
       />
       <GridItem
-        icon={<GitBranch className="h-4 w-4 text-sky-400" />}
-        title="Decentralized File Sharing System"
-        description="Peer-to-peer file sharing with RSA/AES encryption and a distributed hash table so neighbors can discover each other quickly and securely."
-        meta="Distributed storytelling about trust, speed, and resilience"
-        tags={["Java", "Peer to Peer", "Encryption"]}
-        repoUrl="https://github.com/rahul2251999/Peer-to-Peer-Secured-File-System"
-        imageSrc={decentralizedImage as string}
+        icon={<Layers className="h-4 w-4 text-sky-400" />}
+        title="Enterprise Perfume Marketplace"
+        description="Full-stack monorepo platform with 7 microservices (catalog, offers, search, affiliate, user, ratings, notifications), Python crawlers, Kafka event streaming, and a Next.js PWA frontend — built with DDD and Hexagonal Architecture."
+        meta="Production-grade e-commerce microservices platform"
+        tags={["TypeScript", "Node.js", "Kafka", "PostgreSQL", "Redis", "Docker"]}
+        repoUrl="https://github.com/ArunAlur/app-monorepo"
+        imageSrc="/projects/marketplace.jpg"
       />
       <GridItem
-        icon={<Box className="h-4 w-4 text-purple-400" />}
-        title="AI Customer Support Chatbot"
-        description="An AI assistant on Azure with custom NLP pipelines that handles 1,000+ daily incidents through contextual, multi-turn conversations."
-        meta="Conversational systems grounded in context and empathy"
-        tags={["AI", "NLP", "Azure"]}
-        repoUrl="https://github.com/rahul2251999/AI-Powered-Customer-Support-Chatbot"
-        imageSrc={chatbotImage as string}
+        icon={<Database className="h-4 w-4 text-purple-400" />}
+        title="NFL & Premier League Data Pipeline"
+        description="End-to-end data engineering pipeline extracting live sports + stock data from APIs, orchestrated with Prefect, transformed with dbt in BigQuery, and visualized via a Streamlit dashboard — all provisioned on GCP with Terraform."
+        meta="Sports analytics data pipeline on Google Cloud"
+        tags={["Python", "dbt", "BigQuery", "Prefect", "Terraform", "GCP"]}
+        repoUrl="https://github.com/ArunAlur/NFL-Premier-League-Pipeline"
+        imageSrc="/projects/pipeline.jpg"
       />
       <GridItem
-        icon={<Layers className="h-4 w-4 text-amber-300" />}
-        title="Distributed Cache System"
-        description="A Redis-backed distributed cache with consistent hashing that keeps services responsive even as nodes ebb and flow across the cluster."
-        meta="Clustered caching that embraces graceful failover"
-        tags={["Redis", "Distributed", "Cache"]}
-        repoUrl="https://github.com/rahul2251999/Distributed-Cache-System"
-        imageSrc={cacheImage as string}
+        icon={<Box className="h-4 w-4 text-amber-300" />}
+        title="Twitter Real-Time Trend Monitor"
+        description="Real-time Twitter trend monitoring pipeline using Kafka for ingestion, Apache Spark for stream processing, AWS S3 for storage, and MongoDB Atlas for persistence — with a live Streamlit dashboard for visualization."
+        meta="Real-time social media stream processing with Spark"
+        tags={["Kafka", "Spark", "Python", "MongoDB", "AWS S3", "Streamlit"]}
+        repoUrl="https://github.com/ArunAlur/Twitter-spark"
+        imageSrc="/projects/twitter-spark.jpg"
       />
     </motion.ul>
   );
@@ -80,12 +78,12 @@ interface GridItemProps {
   meta?: string;
   tags?: string[];
   repoUrl?: string;
+  liveUrl?: string;
   imageSrc?: string | { src: string };
 }
 
-const GridItem = ({ icon, title, description, tags, repoUrl, imageSrc }: GridItemProps) => {
-  const resolvedImageSrc =
-    typeof imageSrc === "string" ? imageSrc : imageSrc?.src;
+const GridItem = ({ icon, title, description, tags, repoUrl, liveUrl, imageSrc }: GridItemProps) => {
+  const resolvedImageSrc = typeof imageSrc === "string" ? imageSrc : imageSrc?.src ?? undefined;
 
   const cardRef = useRef<HTMLLIElement>(null);
   const rawRotateX = useMotionValue(0);
@@ -166,17 +164,30 @@ const GridItem = ({ icon, title, description, tags, repoUrl, imageSrc }: GridIte
               )}
             </div>
 
-            {repoUrl && (
-              <div className="mt-2 flex items-center justify-between text-sm font-medium text-accent-white border-t border-border/40 pt-4">
-                <a
-                  href={repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs md:text-sm opacity-60 transition-opacity duration-200 hover:opacity-100"
-                >
-                  <span>View Repository</span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
+            {(repoUrl || liveUrl) && (
+              <div className="mt-2 flex items-center gap-4 border-t border-border/40 pt-4">
+                {repoUrl && (
+                  <a
+                    href={repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs md:text-sm opacity-60 transition-opacity duration-200 hover:opacity-100 text-accent-white font-medium"
+                  >
+                    <span>Repository</span>
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                )}
+                {liveUrl && (
+                  <a
+                    href={liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs md:text-sm opacity-60 transition-opacity duration-200 hover:opacity-100 text-emerald-400 font-medium"
+                  >
+                    <span>Live Site</span>
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                )}
               </div>
             )}
           </div>

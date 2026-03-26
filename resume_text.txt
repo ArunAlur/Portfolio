@@ -1,106 +1,55 @@
-RAHUL PODUGU
-United States
-(443) 983-5865 — rahulp1@umbc.edu
-linkedin.com/in/rahulpodugu — github.com/Rahul2251999
+Arun Basavaraj Alur
+(602) 743-0852 — aalur2@asu.edu — linkedin.com/in/arun-basavaraj-alur — github.com/ArunAlur
 
-PROFESSIONAL SUMMARY
-Software Engineer with over 2 years of experience in Java development, Spring Boot microservices, and cloud-native applications on AWS. Skilled in designing scalable payment systems, implementing AI/ML solutions, and optimizing application
-performance. Experienced in Agile methodologies, CI/CD pipelines, and containerization with Docker and Kubernetes.
-Passionate about leveraging AI, microservices architecture, and cloud technologies to build robust enterprise solutions.
+Professional Summary
+Backend-focused Software Engineer with hands-on experience building cloud-native backend services using Java,
+Python, Spring Boot, and AWS. Seeking New Grad / SDE I backend roles.
 
-TECHNICAL SKILLS
-• Programming Languages: Java, Python, JavaScript, TypeScript, C++, C#, Kotlin
-• Frameworks & Libraries: Spring Boot, Spring Framework, Node.js, Express, Angular, React, REST APIs, GraphQL,
-gRPC, FastAPI
-• Cloud & DevOps: AWS (EC2, Lambda, S3, CloudWatch), Azure, Docker, Kubernetes, Jenkins, Git, CI/CD, Terraform, Helm
-• Data & AI: PostgreSQL, MongoDB, Redis, Apache Kafka, TensorFlow, scikit-learn, FAISS, Pinecone, LangChain,
-OpenAI API
-• Testing & Agile: Selenium, JUnit, Mockito, Jest, Postman, TDD/BDD, Scrum, Kanban, Jira
+Education
+Master of Science in Information Technology August 2024 – May 2026
+Arizona State University ; GPA: 4.00/4.00 Tempe, AZ
+Bachelor of Technology August 2018 – May 2022
+KLE Technological University; GPA: 3.6/4.0 Hubli, India
 
-PROFESSIONAL EXPERIENCE
-Software Developer
-Aztra
+Technical Skills
+Languages: Java, Python, SQL, JavaScript, TypeScript,
+Backend & Distributed Systems: Spring Boot, REST APIs, API Design, Microservices, Distributed Systems, Node.js,
+Flask, GraphQL, Hibernate
+Cloud & Infrastructure: AWS (Lambda, S3, DynamoDB, CodePipeline), Docker, Kubernetes, CI/CD, Jenkins, Linux
+Databases: PostgreSQL, DynamoDB, SQL/NoSQL, Vector Databases
+Testing & Observability: JUnit, Mockito, Integration Testing, Prometheus, Logging, Monitoring
+AI & Data: OpenAI GPT, LangChain, Kafka, Spark, NLP
+Frontend: React, Next.js, Tailwind CSS, Chart.js
 
-May 2024 – Present
-Baltimore, MD
+Experience
+Amazon May 2025 – August 2025
+Software Developer Intern Seattle, USA
+• Engineered multi-pipeline invocation within a backend CI orchestration service in AWS CodePipeline, enabling
+deterministic failure handling across 200+ pipelines and improving large-scale CI reliability by 7%
+• Implemented backward-compatible invoke actions in a backend service using Java, Spring Boot, and AWS APIs,
+supporting distributed cross-service validation workflows for 15 engineering teams.
+• Strengthened release quality of backend systems by authoring comprehensive JUnit/Mockito test suites achieving
+92% coverage, while defining service-level production alarms and operational runbooks.
+• Prototyped an AI-powered PR assistant as internal backend tooling to surface logs across services and
+configuration checks, reducing incident triage resolution time from 45 minutes to 28 minutes.
 
-• Architected and implemented Java Spring Boot microservices for payment processing on AWS, handling 100K+ daily
-transactions with 99.9% uptime
-• Integrated Apache Kafka for event-driven architecture, implementing Saga pattern for distributed transactions, reducing
-latency by 40%
-• Developed AI-powered customer support system using LangChain with GPT-4 and Claude, automating 30% of payment
-queries with RAG flows
-• Built vector search system with FAISS to index payment documentation and logs, improving chatbot response accuracy
-by 25%
-• Optimized database performance through SQL query tuning and Redis caching implementation, reducing API response
-time by 30%
-• Conducted JMeter load testing and implemented AWS auto-scaling with load balancing, achieving 99th percentile latency
-under 150ms for 50K+ users
-• Led 7-member Scrum team through 2-week sprints, implementing CI/CD pipelines with GitHub Actions and Jenkins for
-automated testing and deployment
-• Containerized microservices with Docker and Kubernetes, integrating AWS monitoring with Prometheus and CloudWatch
-for 40% faster incident recovery
-Software Developer (Research Assistant)
-Sept 2022 – Nov 2023
-University of Maryland, Baltimore County (UMBC)
-Baltimore, MD
-• Developed real-time research dashboard using Angular with server-side rendering (Angular Universal), reducing initial
-load time by 40%
-• Engineered scalable Node.js backend with Express and GraphQL on Kubernetes, supporting 10K+ concurrent users
-• Implemented Redis caching and database optimization strategies, reducing API latency by 35% and improving overall
-system performance
-• Secured sensitive research data with JWT authentication and role-based access control (RBAC), ensuring compliance
-with university data policies
-• Collaborated with research teams to translate complex data visualization requirements into interactive dashboard components
-Software Developer
-Sept 2021 – Jun 2022
-UST
-Bangalore, India
-• Designed and implemented payment workflows using Java, Kafka, and Saga orchestration pattern, ensuring ACID com-
+Accenture September 2022 – July 2024
+Software Engineer Bangalore, India
+• Designed and operated fault-tolerant Java/Spring Boot backend microservices handling 50K production daily
+requests with sustained 99.5% uptime.
+• Built a full-stack Python/Flask application with a backend service layer, consumed by a React frontend for
+document analysis, leveraging LangChain and vector databases to streamline knowledge retrieval.
+• Instrumented backend system observability for distributed services using Prometheus, cutting debugging and
+incident analysis time from 4 hours to 90 minutes.
 
-pliance for distributed transactions
-• Increased transaction reliability by 45% for 10K+ daily transactions through improved error handling and recovery
-mechanisms
-• Optimized Spring Boot microservices with enhanced REST communication and asynchronous messaging, boosting
-throughput by 30% across 5 services
-• Developed robust REST APIs with real-time validation and concurrency controls, improving warehouse inventory accuracy by 25%
-• Implemented rollback logic and transaction boundaries for data consistency across distributed systems
-• Built comprehensive test suites using Selenium WebDriver, JUnit, and Mockito in a TDD environment, reducing manual
-QA effort by 75%
-• Led Agile ceremonies and Kanban workflows as acting Scrum Lead for a 6-member team, increasing delivery velocity by
-25%
-Analyst Intern
-Apr 2021 – Aug 2021
-Fidelity National Financial
-Bangalore, India
-• Streamlined ETL pipelines for Oracle-to-Redshift migration, resolving 200+ Java/SQL issues and improving data quality
-by 50%
-• Developed a Java-based automation tool for data extraction and transformation, cutting processing time by 30%
-• Optimized Hibernate queries and Java modules, reducing system crashes by 40% through memory leak fixes
-• Implemented CI/CD pipelines with Jenkins and Docker on AWS, automating Kubernetes deployments with YAML scripts
-
-PROJECTS
-Decentralized File Sharing System
-P2P file sharing application with RSA/AES encryption and DHT indexing using Java and Linux io uring. Implemented
-multithreaded architecture achieving 3x faster access times compared to traditional file sharing systems.
-https://github.com/Rahul2251999/Peer-to-Peer-Secured-File-System
-Real-Time Stock Trading Engine
-Developed a high-performance matching engine using lock-free concurrency with Compare-And-Swap (CAS) operations
-in Java. Achieved sub-millisecond latency for processing 1,000+ stock tickers simultaneously. Implemented order book
-management with price-time priority queue. https://github.com/Rahul2251999/stock-trading-engine
-AI Customer Support Chatbot
-Built an intelligent customer support system with Azure Bot Services, LUIS, and custom NLP stack. Handles 1,000+
-queries daily with 60% improved resolution rate. Implemented intent recognition, entity extraction, and sentiment analysis
-for personalized responses. https://github.com/Rahul2251999/AI-Powered-Customer-Support-Chatbot
-
-EDUCATION
-M.S. in Computer Science
-Aug 2022 – May 2024
-University of Maryland, Baltimore County (UMBC)
-GPA: 3.8/4.0 Relevant Coursework: Advanced Algorithms,
-Distributed Systems, Machine Learning, Cloud Computing, Big Data Analytics
-
-PUBLICATIONS
-• ”Remote Medical Assistance for Marine Fishermen through OceanNet”, IEEE ICCCNT 2021, DOI: 10.1109/ICCCNT51525.2021.9579678
-
-
+Projects
+git-context | Python, FastAPI, React, TypeScript, Tree-sitter, Vercel | git-context.com 2025 - Present
+• Built a 4-phase AST-powered pipeline (clone → filter → rank → assemble) that compresses any GitHub repo into a
+single token-budgeted context file (32k–200k tokens) for LLM ingestion, eliminating 20+ minutes of manual
+curation per session.
+• Engineered language-agnostic AST extractors across 5 runtimes (Python, Java, JavaScript, Go, Rust) with 13
+REST API endpoints and a FastAPI backend deployed on Vercel.
+• Reduced LLM context prep to a single CLI command by automating noise filtering (build artifacts, binaries, lock files)
+and surfacing import-graph centrality rankings.
+• Extended the tool with an MCP server integration enabling direct context injection into Claude, GPT-4, and
+Gemini, with a real-time Composer UI managing session state across 111 source files.

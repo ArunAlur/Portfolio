@@ -9,7 +9,7 @@ export default function ScrollyCanvas() {
   const [images, setImages] = useState<HTMLImageElement[]>([]);
   const [loadedCount, setLoadedCount] = useState(0);
 
-  const totalFrames = 75; // Based on the actual number of files
+  const totalFrames = 100; // Based on the actual number of files
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],

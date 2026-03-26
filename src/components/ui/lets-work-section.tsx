@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { ArrowUpRight, Calendar, Github, Instagram, Linkedin, Twitter, Code2, X } from "lucide-react"
+import { ArrowUpRight, Calendar, Github, Linkedin, X } from "lucide-react"
 
 export function LetsWorkTogether() {
   const [isHovered, setIsHovered] = useState(false)
@@ -21,7 +21,7 @@ export function LetsWorkTogether() {
   }
 
   const handleBookCall = () => {
-    window.open("https://calendly.com/rahulpodugu2/30min", "_blank")
+    window.open("mailto:aalur2@asu.edu", "_blank")
   }
 
   const handleBack = () => {
@@ -278,16 +278,16 @@ export function LetsWorkTogether() {
             Have a project in mind? I&apos;d love to hear about it. Let&apos;s create something exceptional together.
           </p>
           <a
-            href="mailto:rahulpodugu2@gmail.com"
+            href="mailto:aalur2@asu.edu"
             className="text-xs tracking-widest uppercase text-muted-foreground/60 transition-colors duration-200 hover:text-accent-white"
           >
-            RAHULPODUGU2@GMAIL.COM
+            AALUR2@ASU.EDU
           </a>
 
           {/* Social links */}
           <div className="mt-5 flex items-center justify-center gap-4">
             <a
-              href="https://www.linkedin.com/in/rahulpodugu/"
+              href="https://www.linkedin.com/in/arun-basavaraj-alur/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -296,40 +296,13 @@ export function LetsWorkTogether() {
               <Linkedin className="h-5 w-5" />
             </a>
             <a
-              href="https://github.com/Rahul2251999"
+              href="https://github.com/ArunAlur"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/70 text-accent-gray shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-white/70 hover:text-accent-white hover:shadow-[0_0_18px_rgba(148,163,184,0.5)]"
             >
               <Github className="h-5 w-5" />
-            </a>
-            <a
-              href="https://x.com/rahulku67492929"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="X (Twitter)"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/70 text-accent-gray shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-white/70 hover:text-accent-white hover:shadow-[0_0_18px_rgba(148,163,184,0.5)]"
-            >
-              <Twitter className="h-5 w-5" />
-            </a>
-            <a
-              href="https://www.instagram.com/rahul_podugu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/70 text-accent-gray shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-white/70 hover:text-accent-white hover:shadow-[0_0_18px_rgba(248,113,113,0.5)]"
-            >
-              <Instagram className="h-5 w-5" />
-            </a>
-            <a
-              href="https://leetcode.com/u/rahulpodugu2/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LeetCode"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/70 text-accent-gray shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-white/70 hover:text-accent-white hover:shadow-[0_0_18px_rgba(250,204,21,0.5)]"
-            >
-              <Code2 className="h-5 w-5" />
             </a>
           </div>
         </div>

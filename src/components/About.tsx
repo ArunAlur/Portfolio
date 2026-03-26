@@ -32,10 +32,10 @@ export function About() {
   const [isDownloading, setIsDownloading] = useState(false);
 
   const aboutSegments = [
-    'This portfolio is the map of a builder who chases quiet confidence. I am drawn to messy systems, not for the chaos, but for the chance to trace the signal inside the noise and leave teams with something sturdier than before.',
-    'I grew up in India sketching circuits in notebooks and searching for patterns in every puzzle I could find. Graduate study at UMBC pulled that curiosity into distributed systems, cloud primitives, and applied machine intelligence. Each project here is a chapter from that move across continents, disciplines, and perspectives.',
-    "Today, at Aztra, I steward payment and analytics platforms that run around the clock. The work blends patient systems thinking with collaborative rituals, pairing with product partners, mentoring teammates, and stringing together architectures that keep trust intact even under stress.",
-    'Away from delivery sprints, I write, share what I learn, and keep experimenting with open source ideas that stretch my point of view. The story is still being written, and I am always searching for the next frontier where thoughtful engineering can create calm for the people who rely on it.'
+    'This portfolio is the map of a builder who thrives on turning complex backend problems into clean, composable solutions. I chase the signal inside the noise, whether that means orchestrating CI pipelines or designing fault-tolerant microservices that teams can depend on.',
+    'I grew up in India, studied at KLE Technological University, then moved to Arizona State University for my Masters in IT. That journey pulled my curiosity into distributed systems, cloud-native architectures, and AI-driven tooling. Each project here is a chapter from that move across continents and disciplines.',
+    "At Amazon, I engineered multi-pipeline CI orchestration and prototyped AI-powered developer tooling. At Accenture, I designed fault-tolerant Spring Boot microservices handling 50K daily requests and built full-stack applications with LangChain and vector databases.",
+    'Away from production systems, I build open source tools like git-context that compress entire codebases into LLM-ready context files. The story is still being written, and I am always searching for the next frontier where thoughtful engineering can create calm for the people who rely on it.'
   ];
 
   const handleStartDownload = useCallback(() => {
@@ -54,7 +54,7 @@ export function About() {
 
     const a = document.createElement('a');
     a.href = resumeUrl;
-    a.download = 'Rahul_Podugu_Resume.pdf';
+    a.download = 'Arun_Alur_Resume.pdf';
     a.rel = 'noopener noreferrer';
     document.body.appendChild(a);
     a.click();
@@ -67,12 +67,12 @@ export function About() {
         <div className="mb-12 max-w-4xl pl-6 sm:pl-8 md:pl-12 lg:pl-16">
           <span className="text-sm uppercase tracking-[0.4em] text-accent-gray">About</span>
           <h2 className="mt-4 text-4xl font-bold text-accent-white sm:text-5xl">
-            How I build calm in complex systems
+            How I build reliable backend systems
           </h2>
           <div className="mt-4 max-w-2xl">
             <HyperTextParagraph
-              text="Systems engineer, strategist, and teammate focused on making backend platforms feel reliable, no matter how much chaos is happening behind the curtain."
-              highlightWords={["systems", "engineer", "backend", "platforms", "reliable"]}
+              text="Backend-focused engineer building cloud-native services, CI orchestration, and AI-powered tooling with Java, Spring Boot, and AWS."
+              highlightWords={["backend", "cloud-native", "CI", "AI-powered", "AWS"]}
               className="text-accent-gray text-xs md:text-sm"
             />
           </div>
@@ -80,9 +80,9 @@ export function About() {
           {/* Stats counters */}
           <div className="mt-10 flex flex-wrap gap-8 pl-0">
             {[
-              { value: 4, suffix: "+", label: "Years experience" },
-              { value: 10, suffix: "+", label: "Projects shipped" },
-              { value: 3, suffix: "", label: "Companies" },
+              { value: 2, suffix: "+", label: "Years experience" },
+              { value: 4, suffix: "+", label: "Projects shipped" },
+              { value: 2, suffix: "", label: "Companies" },
             ].map(({ value, suffix, label }) => (
               <div key={label} className="flex flex-col gap-1">
                 <span className="text-3xl font-bold tracking-tight text-accent-white sm:text-4xl">
@@ -103,7 +103,7 @@ export function About() {
                   <div key={index} className="pt-2 pb-2">
                     <HyperTextParagraph
                       text={segment}
-                      highlightWords={["builder", "systems", "signal", "noise", "teams"]}
+                      highlightWords={["builder", "backend", "composable", "microservices", "teams"]}
                       className="text-sm md:text-base leading-relaxed text-accent-gray font-normal"
                     />
                   </div>
@@ -115,7 +115,7 @@ export function About() {
                   <div key={index} className="pt-2 pb-2">
                     <HyperTextParagraph
                       text={segment}
-                      highlightWords={["India", "UMBC", "distributed", "systems", "cloud", "machine", "intelligence"]}
+                      highlightWords={["India", "KLE", "Arizona", "distributed", "systems", "cloud-native", "AI-driven"]}
                       className="text-sm md:text-base leading-relaxed text-accent-gray font-normal"
                     />
                   </div>
@@ -127,7 +127,7 @@ export function About() {
                   <div key={index} className="pt-2 pb-2">
                     <HyperTextParagraph
                       text={segment}
-                      highlightWords={["Aztra", "payment", "analytics", "platforms", "systems", "thinking", "architectures"]}
+                      highlightWords={["Amazon", "Accenture", "microservices", "Spring", "LangChain", "vector"]}
                       className="text-sm md:text-base leading-relaxed text-accent-gray font-normal"
                     />
                   </div>
@@ -139,7 +139,7 @@ export function About() {
                   <div key={index} className="pt-2 pb-2">
                     <HyperTextParagraph
                       text={segment}
-                      highlightWords={["write", "open", "source", "engineering", "frontier"]}
+                      highlightWords={["open", "source", "git-context", "LLM-ready", "engineering"]}
                       className="text-sm md:text-base leading-relaxed text-accent-gray font-normal"
                     />
                   </div>

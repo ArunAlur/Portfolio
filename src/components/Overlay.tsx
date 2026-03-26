@@ -47,7 +47,7 @@ export default function Overlay() {
             animate={mounted ? { opacity: 1, filter: "blur(0px)", y: 0 } : {}}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
-            RAHUL PODUGU.
+            ARUN ALUR.
           </motion.h1>
           <motion.p
             className="text-lg md:text-xl text-white/60 mt-4 uppercase tracking-[0.25em]"
@@ -55,7 +55,7 @@ export default function Overlay() {
             animate={mounted ? { opacity: 1, filter: "blur(0px)" } : {}}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
           >
-            Software Engineer · Backend &amp; Distributed Systems
+            Software Engineer · Backend &amp; Cloud-Native Systems
           </motion.p>
         </motion.div>
       </div>
@@ -67,10 +67,10 @@ export default function Overlay() {
           className="max-w-xl"
         >
           <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight">
-            I design calm, reliable systems.
+            I build resilient backend systems.
           </h2>
           <p className="text-white/60 mt-6 text-lg">
-            From payment rails to AI analytics, I focus on predictable latency, clear observability, and architectures teams can trust.
+            From CI orchestration at Amazon to fault-tolerant microservices at Accenture, I focus on reliability, observability, and cloud-native architectures teams can trust.
           </p>
         </motion.div>
       </div>
@@ -82,10 +82,10 @@ export default function Overlay() {
           className="max-w-xl text-right"
         >
           <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight">
-            Bridging AI, data, and platforms.
+            Bridging AI tooling and distributed systems.
           </h2>
           <p className="text-white/60 mt-6 text-lg">
-            Turning research, infrastructure, and product constraints into resilient systems that stay calm under load.
+            From AST-powered developer tools to LLM-integrated pipelines, turning complex infrastructure into calm, composable platforms.
           </p>
         </motion.div>
       </div>

@@ -16,10 +16,10 @@ export default function Projects() {
         >
           <span className="text-sm uppercase tracking-[0.4em] text-accent-gray">Recent Builds</span>
           <h2 className="mt-4 text-3xl font-bold text-accent-white md:text-5xl">
-            Systems I&apos;m excited to have shipped
+            Tools and systems I&apos;ve built
           </h2>
           <p className="mt-4 mx-auto max-w-2xl text-sm text-accent-gray md:text-base">
-            Distributed rails, real-time engines, and AI copilots that keep teams calm when the load spikes.
+            Developer tools, microservices platforms, data pipelines, and real-time stream processors — built to solve real problems at scale.
           </p>
           <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-white/20" />
         </motion.div>

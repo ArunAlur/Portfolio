@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import { Code, Github, Instagram, Linkedin } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import profile from "@/assets/image1.png";
 import FancyButton from "@/components/ui/shiny-button";
 import HeroText from "@/components/ui/hero-shutter-text";
@@ -95,11 +95,8 @@ export function PortfolioHero() {
   const isDark = true;
   const socialIcons = useMemo(
     () => [
-      { Icon: Linkedin, href: "https://www.linkedin.com/in/rahulpodugu", label: "LinkedIn profile", variant: "indigo" as const, isX: false },
-      { Icon: Github, href: "https://github.com/Rahul2251999", label: "GitHub profile", variant: "default" as const, isX: false },
-      { href: "http://x.com/rahulku67492929", label: "X profile", variant: "default" as const, isX: true },
-      { Icon: Instagram, href: "https://www.instagram.com/rahul_podugu/", label: "Instagram profile", variant: "red" as const, isX: false },
-      { Icon: Code, href: "https://leetcode.com/u/rahulpodugu2/", label: "LeetCode profile", variant: "green" as const, isX: false },
+      { Icon: Linkedin, href: "https://www.linkedin.com/in/arun-basavaraj-alur", label: "LinkedIn profile", variant: "indigo" as const, isX: false },
+      { Icon: Github, href: "https://github.com/ArunAlur", label: "GitHub profile", variant: "default" as const, isX: false },
     ],
     [],
   );
@@ -126,14 +123,14 @@ export function PortfolioHero() {
             {/* Soft radial glow behind avatar */}
             <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(190,242,100,0.5),transparent_65%)] blur-3xl opacity-80 sm:h-[230px] sm:w-[230px] md:h-[260px] md:w-[260px]" />
             <HeroText
-              text="RAHUL"
+              text="ARUN"
               inline
               characterClassName="text-[110px] sm:text-[160px] md:text-[210px] lg:text-[240px] leading-[0.75] font-bold tracking-tighter text-lime-300"
               className="whitespace-nowrap"
             />
             <div className="relative inline-block">
               <HeroText
-                text="PODUGU"
+                text="ALUR"
                 inline
                 characterClassName="text-[110px] sm:text-[160px] md:text-[210px] lg:text-[240px] leading-[0.75] font-bold tracking-tighter text-lime-300"
                 className="whitespace-nowrap"
@@ -143,7 +140,7 @@ export function PortfolioHero() {
             </div>
 
             <div className="absolute left-1/2 top-1/2 z-10 h-[120px] w-[70px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full shadow-[0_0_40px_rgba(190,242,100,0.35)] ring-2 ring-lime-300/40 transition-transform duration-300 hover:scale-110 sm:h-[160px] sm:w-[95px] md:h-[190px] md:w-[115px] lg:h-[225px] lg:w-[135px]">
-              <img src={profile} alt="Rahul Podugu" className="h-full w-full object-cover" />
+              <img src={profile} alt="Arun Alur" className="h-full w-full object-cover" />
             </div>
           </div>
         </div>
@@ -152,7 +149,7 @@ export function PortfolioHero() {
           <div className="flex flex-col items-center gap-6">
             <div className="flex flex-col items-center gap-3">
               <BlurText
-                text="Software Engineer · Backend, Payments, AI Systems"
+                text="Software Engineer · Backend, Cloud-Native, AI Tooling"
                 delay={70}
                 animateBy="words"
                 direction="top"
@@ -160,7 +157,7 @@ export function PortfolioHero() {
                 style={{ fontFamily: "'Antic', sans-serif" }}
               />
               <BlurText
-                text="Designing calm, reliable platforms across payment rails, analytics pipelines, and AI workloads."
+                text="Building cloud-native backend services, CI orchestration, and AI-powered developer tools."
                 delay={120}
                 animateBy="words"
                 direction="top"

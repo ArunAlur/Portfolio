@@ -7,28 +7,28 @@ import { Award, Zap } from "lucide-react";
 export function TimelineDemo() {
   const data = [
     {
-      title: "Aztra",
+      title: "Amazon",
       content: (
         <div className="space-y-4">
           <div className="bg-dark-gray/50 rounded-xl p-6 border border-medium-gray">
-            <h4 className="text-accent-white text-lg font-semibold">Software Engineer II · Aztra</h4>
+            <h4 className="text-accent-white text-lg font-semibold">Software Developer Intern · Amazon</h4>
             <p className="text-xs uppercase tracking-[0.2em] text-accent-gray/80 mt-1 mb-3">
-              Aug 2024 – Present · Remote
+              May 2025 – August 2025 · Seattle, USA
             </p>
             <p className="text-accent-gray text-sm leading-relaxed mb-4">
-              Within Aztra&apos;s AI analytics platform I stitch together Spring services, event streams, and observability
-              loops so investigations flow as smoothly as payments. The mission is simple: make complex systems feel calm
-              for the people who depend on them.
+              Engineered multi-pipeline CI orchestration within AWS CodePipeline, enabling deterministic failure handling
+              across 200+ pipelines and improving large-scale CI reliability by 7%. Implemented backward-compatible invoke
+              actions supporting distributed cross-service validation for 15 engineering teams.
             </p>
             <div className="space-y-2 mb-4">
               <div className="flex items-center gap-3">
                 <Award className="h-5 w-5 text-accent-white" />
-                <span className="text-accent-white font-medium">Theme: payment rails that never flinch</span>
+                <span className="text-accent-white font-medium">Theme: CI orchestration at scale</span>
               </div>
               <div className="flex items-center gap-3">
                 <Zap className="h-5 w-5 text-accent-white" />
                 <span className="text-accent-white font-medium">
-                  Focus: LangChain, Claude, and human-guided automation
+                  Focus: AI-powered PR assistant reducing triage time by 38%
                 </span>
               </div>
             </div>
@@ -39,33 +39,39 @@ export function TimelineDemo() {
             <div className="flex flex-wrap gap-2">
               <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Java</span>
               <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Spring Boot</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">AWS</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Kafka</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">AI/ML</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Microservices</span>
+              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">AWS CodePipeline</span>
+              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">JUnit/Mockito</span>
+              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">CI/CD</span>
+              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">AI Tooling</span>
             </div>
           </div>
         </div>
       ),
     },
     {
-      title: "UMBC",
+      title: "Accenture",
       content: (
         <div className="space-y-4">
           <div className="bg-dark-gray/50 rounded-xl p-6 border border-medium-gray">
-            <h4 className="text-accent-white text-lg font-semibold">Software Engineer &amp; Research Assistant · UMBC</h4>
+            <h4 className="text-accent-white text-lg font-semibold">Software Engineer · Accenture</h4>
             <p className="text-xs uppercase tracking-[0.2em] text-accent-gray/80 mt-1 mb-3">
-              September 2022 – November 2023 · Baltimore, MD
+              September 2022 – July 2024 · Bangalore, India
             </p>
             <p className="text-accent-gray text-sm leading-relaxed mb-4">
-              At UMBC I balanced academic rigor with production pragmatism, shaping real-time dashboards, Kubernetes
-              clusters, and security patterns that gave research teams a live view of their data without sacrificing
-              compliance.
+              Designed and operated fault-tolerant Java/Spring Boot microservices handling 50K daily production requests
+              with 99.5% uptime. Built a full-stack Python/Flask application with LangChain and vector databases for
+              document analysis, and instrumented backend observability using Prometheus.
             </p>
             <div className="space-y-2 mb-4">
-              <div className="text-accent-white font-medium">Craft: Angular Universal storytelling</div>
-              <div className="text-accent-white font-medium">
-                Backbone: GraphQL, Node, and carefully tuned caches
+              <div className="flex items-center gap-3">
+                <Award className="h-5 w-5 text-accent-white" />
+                <span className="text-accent-white font-medium">Theme: fault-tolerant microservices at scale</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Zap className="h-5 w-5 text-accent-white" />
+                <span className="text-accent-white font-medium">
+                  Focus: LangChain, vector databases, and system observability
+                </span>
               </div>
             </div>
           </div>
@@ -73,83 +79,12 @@ export function TimelineDemo() {
           <div className="bg-dark-gray/30 rounded-lg p-4 border border-medium-gray">
             <h5 className="text-accent-white font-medium mb-3">Skills &amp; Technologies</h5>
             <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Angular</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Node.js</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">GraphQL</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Kubernetes</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">JWT</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">RBAC</span>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "UST",
-      content: (
-        <div className="space-y-4">
-          <div className="bg-dark-gray/50 rounded-xl p-6 border border-medium-gray">
-            <h4 className="text-accent-white text-lg font-semibold">Software Development Engineer · UST</h4>
-            <p className="text-xs uppercase tracking-[0.2em] text-accent-gray/80 mt-1 mb-3">
-              August 2021 – June 2022 · Bangalore, India
-            </p>
-            <p className="text-accent-gray text-sm leading-relaxed mb-4">
-              UST introduced me to the choreography of payment workflows and the discipline of microservice design. I
-              guided teams through daily rituals, rewired legacy pathways, and learned how resilient design keeps
-              warehouses and ledgers aligned.
-            </p>
-            <div className="space-y-2 mb-4">
-              <div className="text-accent-white font-medium">
-                Engineering lens: asynchronous messaging and resilient microservices
-              </div>
-              <div className="text-accent-white font-medium">Focus: saga patterns and graceful recovery</div>
-            </div>
-          </div>
-
-          <div className="bg-dark-gray/30 rounded-lg p-4 border border-medium-gray">
-            <h5 className="text-accent-white font-medium mb-3">Skills &amp; Technologies</h5>
-            <div className="flex flex-wrap gap-2">
               <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Java</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Kafka</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Microservices</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Scrum</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">REST APIs</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Saga Pattern</span>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Fidelity National Financial",
-      content: (
-        <div className="space-y-4">
-          <div className="bg-dark-gray/50 rounded-xl p-6 border border-medium-gray">
-            <h4 className="text-accent-white text-lg font-semibold">
-              Software Engineer Intern · Fidelity National Financial
-            </h4>
-            <p className="text-xs uppercase tracking-[0.2em] text-accent-gray/80 mt-1 mb-3">
-              April 2021 – August 2021 · Bangalore, India
-            </p>
-            <p className="text-accent-gray text-sm leading-relaxed mb-4">
-              My industry story began with automation work in insurance. I tuned ETL flows, traced memory leaks, and
-              discovered how thoughtful scripting clears the runway for teams handling sensitive client journeys.
-            </p>
-            <div className="space-y-2 mb-4">
-              <div className="text-accent-white font-medium">Focus: data pipelines built for trust</div>
-              <div className="text-accent-white font-medium">Takeaway: automation as a force multiplier</div>
-            </div>
-          </div>
-
-          <div className="bg-dark-gray/30 rounded-lg p-4 border border-medium-gray">
-            <h5 className="text-accent-white font-medium mb-3">Skills &amp; Technologies</h5>
-            <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Java</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">ETL</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Jenkins</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Docker</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Oracle</span>
-              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Redshift</span>
+              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Spring Boot</span>
+              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Python/Flask</span>
+              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">LangChain</span>
+              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">Prometheus</span>
+              <span className="px-3 py-1 bg-accent-white/10 text-accent-white text-xs rounded-full">React</span>
             </div>
           </div>
         </div>
@@ -170,7 +105,7 @@ export function TimelineDemo() {
           <span className="text-sm uppercase tracking-[0.4em] text-accent-gray">Career</span>
           <h2 className="mt-4 text-4xl font-bold text-accent-white sm:text-5xl">Experience</h2>
           <p className="mt-4 text-accent-gray max-w-2xl">
-            Roles that shaped my systems thinking — from fintech payments to AI research and large-scale distributed platforms.
+            Roles that shaped my systems thinking — from CI orchestration at Amazon to fault-tolerant microservices at Accenture.
           </p>
           <div className="mt-6 h-1 w-24 rounded-full bg-white/20" />
         </motion.div>
