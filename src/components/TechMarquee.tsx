@@ -7,23 +7,37 @@ const techs = [
 ];
 
 export default function TechMarquee() {
-  // Duplicate for seamless loop
-  const items = [...techs, ...techs];
+  // Triple-duplicate for a seamless loop with no visible gap
+  const items = [...techs, ...techs, ...techs];
 
   return (
-    <div className="relative border-y border-white/[0.06] bg-pure-black py-5 overflow-hidden">
-      {/* Fade masks */}
-      <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-pure-black to-transparent z-10" />
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-pure-black to-transparent z-10" />
+    <div
+      className="relative overflow-hidden py-5"
+      aria-label="Technology stack"
+      role="marquee"
+      style={{ borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+    >
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-pure-black via-white/[0.015] to-pure-black pointer-events-none" />
 
-      <div className="flex animate-marquee whitespace-nowrap">
+      {/* Left/right fade masks */}
+      <div
+        className="pointer-events-none absolute left-0 top-0 h-full w-32 z-10"
+        style={{ background: "linear-gradient(to right, #000 0%, transparent 100%)" }}
+      />
+      <div
+        className="pointer-events-none absolute right-0 top-0 h-full w-32 z-10"
+        style={{ background: "linear-gradient(to left, #000 0%, transparent 100%)" }}
+      />
+
+      <div className="flex animate-marquee whitespace-nowrap" aria-hidden="true">
         {items.map((tech, i) => (
           <span
             key={i}
-            className="mx-6 text-[11px] font-medium uppercase tracking-[0.3em] text-white/25"
+            className="mx-5 inline-flex items-center gap-5 text-[11px] font-semibold uppercase tracking-[0.32em] text-white/55"
           >
             {tech}
-            <span className="ml-6 text-white/10">·</span>
+            <span className="h-1 w-1 rounded-full bg-white/20 shrink-0" />
           </span>
         ))}
       </div>

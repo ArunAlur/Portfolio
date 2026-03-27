@@ -13,7 +13,10 @@ export default function BackToTop() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToTop = () => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduced ? "instant" : "smooth" });
+  };
 
   return (
     <AnimatePresence>
@@ -26,7 +29,7 @@ export default function BackToTop() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 12 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-8 right-8 z-[99995] flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/80 text-white/60 backdrop-blur-sm transition-colors duration-200 hover:border-white/50 hover:text-white"
+          className="fixed bottom-8 right-8 z-[70] flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/80 text-white/60 backdrop-blur-sm transition-colors duration-200 hover:border-white/50 hover:text-white"
         >
           <ArrowUp className="h-4 w-4" />
         </motion.button>

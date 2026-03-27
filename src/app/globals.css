@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+/* ─── Respect user motion preferences ─────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
+/* ─── Design tokens ────────────────────────────────────────────────────────── */
 @layer base {
   :root {
     --background: 0 0% 0%;
@@ -28,9 +32,22 @@ html {
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
     --radius: 0.5rem;
+
+    /* ── Managed z-index ladder ── */
+    --z-overlay:     10;
+    --z-content:     20;
+    --z-logo:        30;
+    --z-nav:         50;
+    --z-progress:    60;
+    --z-backtotop:   70;
+    --z-cursor-glow: 75;
+    --z-cursor-ring: 80;
+    --z-cursor-dot:  85;
+    --z-noise:       90;  /* body::after grain — pointer-events:none always */
   }
 }
 
+/* ─── Base resets ──────────────────────────────────────────────────────────── */
 @layer base {
   * {
     @apply border-border;
@@ -43,7 +60,7 @@ html {
     text-rendering: optimizeLegibility;
   }
 
-  /* Hide default cursor on desktop — custom cursor takes over */
+  /* Hide default cursor only for fine-pointer (mouse) devices */
   @media (pointer: fine) {
     *, *::before, *::after {
       cursor: none !important;
@@ -51,36 +68,31 @@ html {
   }
 }
 
-/* Custom scrollbar */
+/* ─── Custom scrollbar ─────────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 3px;
 }
-
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.3);
 }
-
 @media (max-width: 768px) {
-  ::-webkit-scrollbar {
-    width: 0;
-  }
+  ::-webkit-scrollbar { width: 0; }
 }
 
-/* Noise grain overlay — makes pure black feel rich */
+/* ─── Noise grain overlay ──────────────────────────────────────────────────── */
+/* z-index 90, pointer-events:none — sits above everything EXCEPT cursors */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: 99990;
+  z-index: 90;
   pointer-events: none;
   opacity: 0.038;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
@@ -88,17 +100,22 @@ body::after {
   background-repeat: repeat;
 }
 
-/* Infinite marquee */
+/* ─── Animations ───────────────────────────────────────────────────────────── */
+/* Marquee — disabled for users who prefer reduced motion */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-
 .animate-marquee {
   animation: marquee 28s linear infinite;
 }
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
 
-/* Skill card flip-in animation */
+/* Skill card flip-in */
 @keyframes skill-card-in {
   from {
     opacity: 0;
@@ -109,15 +126,62 @@ body::after {
     transform: perspective(600px) rotateY(0deg) translateX(0px);
   }
 }
-
 .skill-card-spin {
   animation: skill-card-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+@media (prefers-reduced-motion: reduce) {
+  .skill-card-spin {
+    animation: none;
+  }
+}
 
+/* Fade-up entrance (shared utility) */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up { animation: none; }
+}
+
+/* ─── Component utilities ──────────────────────────────────────────────────── */
 .glass-card {
   @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl transition-all duration-300;
 }
-
 .glass-card:hover {
-  @apply border-white/20 bg-white/10 shadow-[0_0_20px_rgba(255,255,255,0.05)];
+  @apply border-white/20 bg-white/[0.07] shadow-[0_0_24px_rgba(255,255,255,0.05)];
+}
+
+/* Section label (reusable eyebrow text) */
+.section-label {
+  @apply text-xs uppercase tracking-[0.4em] text-white/50 font-medium;
+}
+
+/* Section divider line */
+.section-rule {
+  @apply h-px w-16 rounded-full bg-gradient-to-r from-white/30 via-white/10 to-transparent;
+}
+
+/* Gradient border card */
+.gradient-border {
+  position: relative;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.03) 50%, transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }

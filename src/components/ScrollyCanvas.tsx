@@ -95,13 +95,14 @@ export default function ScrollyCanvas() {
     ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
   };
 
-  // Handle Resize
+  // Handle Resize (debounced) + orientation change
   useEffect(() => {
-    const handleResize = () => {
+    let timer: ReturnType<typeof setTimeout>;
+
+    const applyResize = () => {
       if (canvasRef.current) {
         canvasRef.current.width = window.innerWidth;
         canvasRef.current.height = window.innerHeight;
-        // Re-render current frame on resize
         if (images.length > 0) {
           const ctx = canvasRef.current.getContext("2d");
           const index = Math.round(frameIndex.get());
@@ -112,10 +113,20 @@ export default function ScrollyCanvas() {
       }
     };
 
-    window.addEventListener("resize", handleResize);
-    handleResize();
+    const handleResize = () => {
+      clearTimeout(timer);
+      timer = setTimeout(applyResize, 120);
+    };
 
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", applyResize);
+    applyResize();
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", applyResize);
+    };
   }, [images, frameIndex]);
 
   return (
@@ -127,7 +138,7 @@ export default function ScrollyCanvas() {
           style={{ objectFit: "cover" }}
         />
         {loadedCount < totalFrames && (
-          <div className="absolute inset-0 flex items-center justify-center bg-[#121212] z-50">
+          <div className="absolute inset-0 flex items-center justify-center bg-[#121212] z-[15]">
             <div className="text-white font-mono text-sm">
               LOADING {Math.round((loadedCount / totalFrames) * 100)}%
             </div>

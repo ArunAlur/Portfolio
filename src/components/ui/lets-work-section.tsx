@@ -33,8 +33,10 @@ export function LetsWorkTogether() {
   }
 
   return (
-    <section className="section bg-pure-black py-24" id="contact">
-      <div className="container mx-auto px-4">
+    <section className="relative bg-pure-black py-24 sm:py-32" id="contact">
+      {/* Top separator */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
         <div className="relative mx-auto flex max-w-xl flex-col items-center gap-8">
         <div
           className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"

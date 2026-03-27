@@ -27,7 +27,7 @@ export default function Home() {
     <main className="relative min-h-screen bg-pure-black">
       {/* Boot loading overlay - always visible for at least 2 seconds */}
       {bootLoading && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-pure-black">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-pure-black">
           <LoadingBreadcrumb text="Cooking" />
         </div>
       )}

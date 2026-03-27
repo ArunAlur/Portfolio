@@ -6,7 +6,7 @@ import { useRef, useEffect, useState } from "react";
 export default function Overlay() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 2100); // fires just after boot loader
+    const t = setTimeout(() => setMounted(true), 2100);
     return () => clearTimeout(t);
   }, []);
 
@@ -16,33 +16,35 @@ export default function Overlay() {
     offset: ["start start", "end end"],
   });
 
-  // Scroll velocity → subtle skew on hero panels
+  // Smoother spring — reduced stiffness + higher damping prevents motion-sickness skew
   const scrollVelocity = useVelocity(scrollY);
-  const skewVelocity = useSpring(scrollVelocity, { stiffness: 500, damping: 80 });
-  const skewY = useTransform(skewVelocity, [-3000, 3000], [-2.5, 2.5]);
+  const skewVelocity = useSpring(scrollVelocity, { stiffness: 120, damping: 60, mass: 0.5 });
+  // Tighter clamp so the effect is a whisper, not a shout
+  const skewY = useTransform(skewVelocity, [-3000, 3000], [-1.2, 1.2]);
 
-  // Section 1: Center (0-20%) — keep name fully visible on first frame
-  const opacity1 = useTransform(scrollYProgress, [0, 0.1, 0.25, 0.3], [1, 1, 1, 0]);
-  const y1 = useTransform(scrollYProgress, [0, 0.3], [0, -100]);
+  // ── Section 1: Centre (0–30%) ──────────────────────────────────────────────
+  const opacity1 = useTransform(scrollYProgress, [0, 0.1, 0.25, 0.3],   [1, 1, 1, 0]);
+  const y1       = useTransform(scrollYProgress, [0, 0.3],               [0, -80]);
 
-  // Section 2: Left (30-50%)
+  // ── Section 2: Left (30–60%) ───────────────────────────────────────────────
   const opacity2 = useTransform(scrollYProgress, [0.25, 0.35, 0.5, 0.6], [0, 1, 1, 0]);
-  const x2 = useTransform(scrollYProgress, [0.3, 0.6], [-50, 0]);
+  const x2       = useTransform(scrollYProgress, [0.3, 0.6],             [-40, 0]);
 
-  // Section 3: Right (60-80%)
+  // ── Section 3: Right (60–95%) ──────────────────────────────────────────────
   const opacity3 = useTransform(scrollYProgress, [0.55, 0.65, 0.85, 0.95], [0, 1, 1, 0]);
-  const x3 = useTransform(scrollYProgress, [0.6, 0.9], [50, 0]);
+  const x3       = useTransform(scrollYProgress, [0.6, 0.9],               [40, 0]);
 
   return (
     <div ref={containerRef} className="pointer-events-none absolute inset-0 z-10 h-[500vh]">
-      {/* Section 1 */}
+
+      {/* ── Section 1 ── */}
       <div className="sticky top-0 h-screen w-full flex items-center justify-center">
         <motion.div
           style={{ opacity: opacity1, y: y1, skewY }}
-          className="text-center px-6"
+          className="text-center px-6 sm:px-12"
         >
           <motion.h1
-            className="text-5xl md:text-8xl xl:text-9xl font-bold tracking-tighter text-white"
+            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white"
             initial={{ opacity: 0, filter: "blur(12px)", y: 20 }}
             animate={mounted ? { opacity: 1, filter: "blur(0px)", y: 0 } : {}}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -50,7 +52,7 @@ export default function Overlay() {
             ARUN ALUR.
           </motion.h1>
           <motion.p
-            className="text-lg md:text-xl text-white/60 mt-4 uppercase tracking-[0.25em]"
+            className="text-sm sm:text-base md:text-lg text-white/65 mt-4 uppercase tracking-[0.25em]"
             initial={{ opacity: 0, filter: "blur(8px)" }}
             animate={mounted ? { opacity: 1, filter: "blur(0px)" } : {}}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
@@ -60,31 +62,39 @@ export default function Overlay() {
         </motion.div>
       </div>
 
-      {/* Section 2 */}
-      <div className="sticky top-0 h-screen w-full flex items-center justify-start px-12 md:px-24">
+      {/* ── Section 2 ── */}
+      <div className="sticky top-0 h-screen w-full flex items-center justify-start px-8 sm:px-16 md:px-24 lg:px-32">
         <motion.div
           style={{ opacity: opacity2, x: x2, skewY }}
-          className="max-w-xl"
+          className="max-w-lg lg:max-w-xl"
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+          <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-white/40 mb-4">
+            What I do
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
             I build resilient backend systems.
           </h2>
-          <p className="text-white/60 mt-6 text-lg">
+          <div className="mt-4 h-px w-12 bg-white/20 rounded-full" />
+          <p className="text-white/60 mt-5 text-sm sm:text-base lg:text-lg leading-relaxed">
             From CI orchestration at Amazon to fault-tolerant microservices at Accenture, I focus on reliability, observability, and cloud-native architectures teams can trust.
           </p>
         </motion.div>
       </div>
 
-      {/* Section 3 */}
-      <div className="sticky top-0 h-screen w-full flex items-center justify-end px-12 md:px-24">
+      {/* ── Section 3 ── */}
+      <div className="sticky top-0 h-screen w-full flex items-center justify-end px-8 sm:px-16 md:px-24 lg:px-32">
         <motion.div
           style={{ opacity: opacity3, x: x3, skewY }}
-          className="max-w-xl text-right"
+          className="max-w-lg lg:max-w-xl text-right"
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+          <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-white/40 mb-4">
+            What I explore
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
             Bridging AI tooling and distributed systems.
           </h2>
-          <p className="text-white/60 mt-6 text-lg">
+          <div className="mt-4 h-px w-12 bg-white/20 rounded-full ml-auto" />
+          <p className="text-white/60 mt-5 text-sm sm:text-base lg:text-lg leading-relaxed">
             From AST-powered developer tools to LLM-integrated pipelines, turning complex infrastructure into calm, composable platforms.
           </p>
         </motion.div>

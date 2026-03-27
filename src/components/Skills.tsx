@@ -126,18 +126,24 @@ const skillsTimeline = [
 
 export function Skills() {
   return (
-    <section id="skills" className="relative border-t border-dark-gray bg-pure-black py-24 mt-8">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="relative bg-pure-black py-24 sm:py-32">
+      {/* Top separator */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
         <motion.div
-          className="mx-auto mb-12 max-w-6xl text-center"
+          className="mb-16 sm:mb-20"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="text-sm uppercase tracking-[0.4em] text-accent-gray">Skills</span>
-          <h2 className="mt-4 text-4xl font-bold text-accent-white sm:text-5xl">Technical Orbit</h2>
-          <p className="mt-4 text-accent-gray">
+          <span className="section-label">Skills</span>
+          <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+            Technical Orbit
+          </h2>
+          <div className="mt-5 section-rule" />
+          <p className="mt-5 max-w-2xl text-sm sm:text-[15px] text-white/50 leading-relaxed">
             A backend-first toolkit honed across cloud-native services, CI orchestration, and AI-powered developer tooling.
           </p>
         </motion.div>
@@ -151,7 +157,6 @@ export function Skills() {
         >
           <RadialOrbitalTimeline timelineData={skillsTimeline} />
         </motion.div>
-
       </div>
     </section>
   );

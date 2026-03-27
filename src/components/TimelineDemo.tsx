@@ -22,11 +22,11 @@ export function TimelineDemo() {
             </p>
             <div className="space-y-2 mb-4">
               <div className="flex items-center gap-3">
-                <Award className="h-5 w-5 text-accent-white" />
+                <Award className="h-5 w-5 text-accent-white" aria-hidden="true" />
                 <span className="text-accent-white font-medium">Theme: CI orchestration at scale</span>
               </div>
               <div className="flex items-center gap-3">
-                <Zap className="h-5 w-5 text-accent-white" />
+                <Zap className="h-5 w-5 text-accent-white" aria-hidden="true" />
                 <span className="text-accent-white font-medium">
                   Focus: AI-powered PR assistant reducing triage time by 38%
                 </span>
@@ -64,11 +64,11 @@ export function TimelineDemo() {
             </p>
             <div className="space-y-2 mb-4">
               <div className="flex items-center gap-3">
-                <Award className="h-5 w-5 text-accent-white" />
+                <Award className="h-5 w-5 text-accent-white" aria-hidden="true" />
                 <span className="text-accent-white font-medium">Theme: fault-tolerant microservices at scale</span>
               </div>
               <div className="flex items-center gap-3">
-                <Zap className="h-5 w-5 text-accent-white" />
+                <Zap className="h-5 w-5 text-accent-white" aria-hidden="true" />
                 <span className="text-accent-white font-medium">
                   Focus: LangChain, vector databases, and system observability
                 </span>
@@ -93,23 +93,28 @@ export function TimelineDemo() {
   ];
 
   return (
-    <section className="relative border-t border-dark-gray bg-pure-black py-24" id="experience">
-      <div className="container mx-auto px-4">
+    <section className="relative bg-pure-black py-24 sm:py-32" id="experience">
+      {/* Top separator */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true }}
-          className="mx-auto mb-12 max-w-4xl px-0 md:px-4 lg:px-6"
+          className="mb-16 sm:mb-20"
         >
-          <span className="text-sm uppercase tracking-[0.4em] text-accent-gray">Career</span>
-          <h2 className="mt-4 text-4xl font-bold text-accent-white sm:text-5xl">Experience</h2>
-          <p className="mt-4 text-accent-gray max-w-2xl">
+          <span className="section-label">Career</span>
+          <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+            Experience
+          </h2>
+          <div className="mt-5 section-rule" />
+          <p className="mt-5 max-w-2xl text-sm sm:text-[15px] text-white/50 leading-relaxed">
             Roles that shaped my systems thinking — from CI orchestration at Amazon to fault-tolerant microservices at Accenture.
           </p>
-          <div className="mt-6 h-1 w-24 rounded-full bg-white/20" />
         </motion.div>
-        <div className="mx-auto max-w-6xl px-0 md:px-4 lg:px-6">
+        <div className="mx-auto max-w-6xl">
           <Timeline data={data} />
         </div>
       </div>
