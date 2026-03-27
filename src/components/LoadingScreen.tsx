@@ -70,6 +70,18 @@ export default function LoadingScreen({ frameProgress, onComplete }: Props) {
     return () => clearTimeout(t);
   }, [advance, pushLog]);
 
+  // Safety: if engine step never advances (e.g. hydration timing edge-case),
+  // force it after 4 s so the loader never stays permanently frozen.
+  useEffect(() => {
+    if (statuses.engine !== "active") return;
+    const t = setTimeout(() => {
+      advance("engine", "assets");
+      pushLog("✓ engine ready");
+      pushLog("› preloading frame sequence (100 frames)...");
+    }, 4000);
+    return () => clearTimeout(t);
+  }, [statuses.engine, advance, pushLog]);
+
   // ── Step 1 → 2: assets done when all frames loaded ──────────────────────
   useEffect(() => {
     if (statuses.assets !== "active") return;
