@@ -3,48 +3,61 @@
 import { useEffect, useRef, useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
 
-export default function ScrollyCanvas() {
+interface Props {
+  /** Called as frames finish loading. Throttled to every 5 frames + final. */
+  onProgress?: (loaded: number, total: number) => void;
+}
+
+export default function ScrollyCanvas({ onProgress }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef    = useRef<HTMLCanvasElement>(null);
   const [images, setImages] = useState<HTMLImageElement[]>([]);
-  const [loadedCount, setLoadedCount] = useState(0);
 
-  const totalFrames = 100; // Based on the actual number of files
+  const totalFrames = 100;
   const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
+    target:  containerRef,
+    offset:  ["start start", "end end"],
   });
-
   const frameIndex = useTransform(scrollYProgress, [0, 1], [0, totalFrames - 1]);
 
-  // Base path for GitHub Pages (e.g. /portfolio) so sequence images load correctly
   const basePath = typeof process.env.NEXT_PUBLIC_BASE_PATH === "string"
     ? process.env.NEXT_PUBLIC_BASE_PATH
     : "";
 
-  // Preload images
+  // ── Preload frames ─────────────────────────────────────────────────────
+  const onProgressRef = useRef(onProgress);
+  useEffect(() => { onProgressRef.current = onProgress; }, [onProgress]);
+
   useEffect(() => {
     const preloadImages = async () => {
       const loadedImages: HTMLImageElement[] = [];
+
       for (let i = 0; i < totalFrames; i++) {
-        const img = new Image();
-        // Matching the actual file naming: frame_00_delay-0.066s.webp
+        const img     = new Image();
         const frameStr = i.toString().padStart(2, "0");
         img.src = `${basePath}/sequence/frame_${frameStr}_delay-0.066s.webp`;
-        await new Promise((resolve) => {
-          img.onload = resolve;
-          img.onerror = resolve; // Continue even if one fails
+
+        await new Promise<void>((resolve) => {
+          img.onload  = () => resolve();
+          img.onerror = () => resolve(); // continue on failure
         });
+
         loadedImages.push(img);
-        setLoadedCount((prev) => prev + 1);
+        const loaded = i + 1;
+
+        // Throttle: report every 5 frames and on the final frame
+        if (loaded % 5 === 0 || loaded === totalFrames) {
+          onProgressRef.current?.(loaded, totalFrames);
+        }
       }
+
       setImages(loadedImages);
     };
 
     preloadImages();
-  }, [basePath]);
+  }, [basePath]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Sync canvas with scroll
+  // ── Sync canvas to scroll position ────────────────────────────────────
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || images.length === 0) return;
@@ -53,63 +66,53 @@ export default function ScrollyCanvas() {
     if (!ctx) return;
 
     const unsubscribe = frameIndex.on("change", (latest) => {
-      const index = Math.round(latest);
-      const img = images[index];
-      if (img && img.complete) {
-        renderFrame(ctx, img, canvas);
-      }
+      const img = images[Math.round(latest)];
+      if (img?.complete) renderFrame(ctx, img, canvas);
     });
 
-    // Initial render
-    if (images[0]) {
-      renderFrame(ctx, images[0], canvas);
-    }
+    if (images[0]) renderFrame(ctx, images[0], canvas);
 
     return () => unsubscribe();
   }, [images, frameIndex]);
 
   const renderFrame = (
-    ctx: CanvasRenderingContext2D,
-    img: HTMLImageElement,
-    canvas: HTMLCanvasElement
+    ctx:    CanvasRenderingContext2D,
+    img:    HTMLImageElement,
+    canvas: HTMLCanvasElement,
   ) => {
     const { width, height } = canvas;
-    const imgRatio = img.width / img.height;
+    const imgRatio    = img.width / img.height;
     const canvasRatio = width / height;
 
-    let drawWidth = width;
+    let drawWidth  = width;
     let drawHeight = height;
-    let offsetX = 0;
-    let offsetY = 0;
+    let offsetX    = 0;
+    let offsetY    = 0;
 
-    // object-fit: cover logic
     if (imgRatio > canvasRatio) {
-      drawWidth = height * imgRatio;
-      offsetX = (width - drawWidth) / 2;
+      drawWidth  = height * imgRatio;
+      offsetX    = (width - drawWidth) / 2;
     } else {
       drawHeight = width / imgRatio;
-      offsetY = (height - drawHeight) / 2;
+      offsetY    = (height - drawHeight) / 2;
     }
 
     ctx.clearRect(0, 0, width, height);
     ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
   };
 
-  // Handle Resize (debounced) + orientation change
+  // ── Debounced resize + orientationchange ───────────────────────────────
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
 
     const applyResize = () => {
-      if (canvasRef.current) {
-        canvasRef.current.width = window.innerWidth;
-        canvasRef.current.height = window.innerHeight;
-        if (images.length > 0) {
-          const ctx = canvasRef.current.getContext("2d");
-          const index = Math.round(frameIndex.get());
-          if (ctx && images[index]) {
-            renderFrame(ctx, images[index], canvasRef.current);
-          }
-        }
+      if (!canvasRef.current) return;
+      canvasRef.current.width  = window.innerWidth;
+      canvasRef.current.height = window.innerHeight;
+      if (images.length > 0) {
+        const ctx   = canvasRef.current.getContext("2d");
+        const index = Math.round(frameIndex.get());
+        if (ctx && images[index]) renderFrame(ctx, images[index], canvasRef.current);
       }
     };
 
@@ -127,7 +130,7 @@ export default function ScrollyCanvas() {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("orientationchange", applyResize);
     };
-  }, [images, frameIndex]);
+  }, [images, frameIndex]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div ref={containerRef} className="relative h-[500vh]">
@@ -137,13 +140,7 @@ export default function ScrollyCanvas() {
           className="absolute inset-0 h-full w-full"
           style={{ objectFit: "cover" }}
         />
-        {loadedCount < totalFrames && (
-          <div className="absolute inset-0 flex items-center justify-center bg-[#121212] z-[15]">
-            <div className="text-white font-mono text-sm">
-              LOADING {Math.round((loadedCount / totalFrames) * 100)}%
-            </div>
-          </div>
-        )}
+        {/* No internal loading overlay — LoadingScreen handles visibility */}
       </div>
     </div>
   );
