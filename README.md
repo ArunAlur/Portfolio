@@ -1,5 +1,7 @@
 # Arun Alur — Portfolio
 
+[![Deploy to GitHub Pages](https://github.com/ArunAlur/Portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/ArunAlur/Portfolio/actions/workflows/deploy.yml)
+
 A modern, performant portfolio for **Arun Alur**, a backend-focused software engineer building cloud-native services, CI orchestration systems, and AI-powered developer tooling.
 
 ## ✨ Features
