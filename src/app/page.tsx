@@ -66,7 +66,7 @@ export default function Home() {
         {/* Hero — ScrollyCanvas starts preloading frames during the loader */}
         <div className="relative" id="hero">
           <ScrollyCanvas onProgress={handleProgress} />
-          <Overlay />
+          <Overlay loaded={loaded} />
         </div>
 
         {/* Below-fold sections */}

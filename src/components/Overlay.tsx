@@ -1,14 +1,14 @@
 "use client";
 
 import { motion, useScroll, useTransform, useVelocity, useSpring } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 
-export default function Overlay() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 2100);
-    return () => clearTimeout(t);
-  }, []);
+interface Props {
+  /** True once the loading curtain has fully exited — triggers hero text reveal. */
+  loaded: boolean;
+}
+
+export default function Overlay({ loaded }: Props) {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress, scrollY } = useScroll({
@@ -46,7 +46,7 @@ export default function Overlay() {
           <motion.h1
             className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white"
             initial={{ opacity: 0, filter: "blur(12px)", y: 20 }}
-            animate={mounted ? { opacity: 1, filter: "blur(0px)", y: 0 } : {}}
+            animate={loaded ? { opacity: 1, filter: "blur(0px)", y: 0 } : {}}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
             ARUN ALUR.
@@ -54,7 +54,7 @@ export default function Overlay() {
           <motion.p
             className="text-sm sm:text-base md:text-lg text-white/65 mt-4 uppercase tracking-[0.25em]"
             initial={{ opacity: 0, filter: "blur(8px)" }}
-            animate={mounted ? { opacity: 1, filter: "blur(0px)" } : {}}
+            animate={loaded ? { opacity: 1, filter: "blur(0px)" } : {}}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
           >
             Software Engineer · Backend &amp; Cloud-Native Systems
