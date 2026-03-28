@@ -16,7 +16,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -38,10 +38,16 @@ jobs:
         run: npm run build
         env:
           GITHUB_PAGES: true
-        
+
+      # Explicitly create .nojekyll so GitHub Pages skips Jekyll and serves
+      # _next/static/ correctly. Next.js may silently skip dotfiles when
+      # copying public/ → out/, so we guarantee it exists here.
+      - name: Disable Jekyll
+        run: touch out/.nojekyll
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
