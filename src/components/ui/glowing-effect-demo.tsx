@@ -6,6 +6,7 @@ import type React from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowUpRight, Box, Database, GitBranch, Layers } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { withBasePath } from "@/lib/asset-path";
 import { cn } from "@/lib/utils";
 // Project images removed — using placeholder gradients instead
 
@@ -84,6 +85,7 @@ interface GridItemProps {
 
 const GridItem = ({ icon, title, description, tags, repoUrl, liveUrl, imageSrc }: GridItemProps) => {
   const resolvedImageSrc = typeof imageSrc === "string" ? imageSrc : imageSrc?.src ?? undefined;
+  const imagePath = resolvedImageSrc ? withBasePath(resolvedImageSrc) : undefined;
 
   const cardRef = useRef<HTMLLIElement>(null);
   const rawRotateX = useMotionValue(0);
@@ -125,10 +127,10 @@ const GridItem = ({ icon, title, description, tags, repoUrl, liveUrl, imageSrc }
         />
         <div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-2xl border-[0.75px] bg-background shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)]">
           {/* Image panel — full bleed, gradient fade at bottom */}
-          {resolvedImageSrc ? (
+          {imagePath ? (
             <div className="relative h-44 w-full overflow-hidden bg-black">
               <img
-                src={resolvedImageSrc}
+                src={imagePath}
                 alt={title}
                 className="h-full w-full object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
               />

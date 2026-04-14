@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
+import { withBasePath } from "@/lib/asset-path";
 
 interface Props {
   /** Called as frames finish loading. Throttled to every 5 frames + final. */
@@ -20,10 +21,6 @@ export default function ScrollyCanvas({ onProgress }: Props) {
   });
   const frameIndex = useTransform(scrollYProgress, [0, 1], [0, totalFrames - 1]);
 
-  const basePath = typeof process.env.NEXT_PUBLIC_BASE_PATH === "string"
-    ? process.env.NEXT_PUBLIC_BASE_PATH
-    : "";
-
   // ── Preload frames ─────────────────────────────────────────────────────
   const onProgressRef = useRef(onProgress);
   useEffect(() => { onProgressRef.current = onProgress; }, [onProgress]);
@@ -35,7 +32,7 @@ export default function ScrollyCanvas({ onProgress }: Props) {
       for (let i = 0; i < totalFrames; i++) {
         const img     = new Image();
         const frameStr = i.toString().padStart(2, "0");
-        img.src = `${basePath}/sequence/frame_${frameStr}_delay-0.066s.webp`;
+        img.src = withBasePath(`/sequence/frame_${frameStr}_delay-0.066s.webp`);
 
         await new Promise<void>((resolve) => {
           img.onload  = () => resolve();
@@ -55,7 +52,7 @@ export default function ScrollyCanvas({ onProgress }: Props) {
     };
 
     preloadImages();
-  }, [basePath]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Sync canvas to scroll position ────────────────────────────────────
   useEffect(() => {

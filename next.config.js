@@ -1,18 +1,16 @@
 /** @type {import('next').NextConfig} */
-const isGithubPages = process.env.GITHUB_PAGES === 'true';
-
-// Custom domain arunalur.me serves from the root — no basePath needed.
-// (basePath was '/Portfolio' only when hosting under github.io/Portfolio without a custom domain)
-const basePath = '';
+const isGithubPages = process.env.GITHUB_PAGES === "true";
+const basePath = isGithubPages ? "/Portfolio" : "";
+const siteUrl = `https://arunalur.me${basePath}`;
 
 const nextConfig = {
-  ...(isGithubPages && { output: 'export' }),
+  ...(isGithubPages && { output: "export" }),
   trailingSlash: true,
   images: { unoptimized: true },
   basePath,
-  assetPrefix: '',
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
+    NEXT_PUBLIC_SITE_URL: siteUrl,
   },
 };
 

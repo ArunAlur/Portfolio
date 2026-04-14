@@ -6,13 +6,23 @@ import ScrollProgressBar from "@/components/ScrollProgressBar";
 import SmoothScroll from "@/components/SmoothScroll";
 
 const inter = Inter({ subsets: ["latin"] });
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? `http://localhost:3000${basePath}`;
 
 export const metadata: Metadata = {
   title: "Arun Alur — Software Engineer",
   description: "Backend-focused software engineer building cloud-native services with Java, Spring Boot, and AWS.",
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
+  icons: {
+    icon: `${basePath}/favicon.svg`,
+    shortcut: `${basePath}/favicon.svg`,
+  },
   openGraph: {
     type: "website",
-    url: "https://arunalur.github.io/portfolio",
+    url: siteUrl,
     title: "Arun Alur — Software Engineer",
     description: "Backend-focused software engineer building cloud-native services with Java, Spring Boot, and AWS.",
     siteName: "Arun Alur Portfolio",

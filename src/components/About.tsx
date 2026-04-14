@@ -5,6 +5,7 @@ import { AnimatedDownload } from './ui/animated-download';
 import { Button } from './ui/button';
 import HyperTextParagraph from './ui/hyper-text-with-decryption';
 import { motion, useInView } from 'framer-motion';
+import { withBasePath } from '@/lib/asset-path';
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -59,10 +60,8 @@ export function About() {
 
   const handleAnimationComplete = useCallback(() => {
     setIsDownloading(false);
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
-    const resumeUrl = `${basePath}/Resume.pdf`.replace(/\/\/+/g, '/');
     const a = document.createElement('a');
-    a.href = resumeUrl;
+    a.href = withBasePath('/Resume.pdf');
     a.download = 'Arun_Alur_Resume.pdf';
     a.rel = 'noopener noreferrer';
     document.body.appendChild(a);
